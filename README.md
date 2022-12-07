@@ -1,22 +1,47 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Install and configure dnf-automatic on hosts which use the dnf package manager. A possible use case is the automatic installation of security updates.
+
+See https://dnf.readthedocs.org/en/latest/automatic.html for more information about dnf-automatic.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+In order for Ansible to work (on Fedora based hosts), it is necessary to have the packages python2, python2-dnf and libselinux-python installed.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+    dnf_automatic_enabled: True
+    
+    dnf_automatic_upgrade_type: security
+    dnf_automatic_apply_updates: yes
+    dnf_automatic_random_sleep: 300
+    dnf_automatic_download_updates: yes
+    dnf_automatic_email_from: root@example.com
+    dnf_automatic_email_to: root
+
+This default configuration sets dnf-automatic up to automatically download and install only security updates.
+
+Additionally, you can set some basic dnf module enabling options.
+
+    dnf_modules: {}
+
+For example, this would set the streams for the php and httpd modules:
+
+    dnf_modules:
+      - name: php
+        stream: remi-8.0
+      - name: httpd
+        stream: codeit
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+No dependencies needed.
 
 Example Playbook
 ----------------
@@ -25,14 +50,14 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - memiah.dnf
 
 License
 -------
 
-BSD
+MIT / BSD
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+This role was created in 2022 by [Memiah Limited](https://github.com/memiah).

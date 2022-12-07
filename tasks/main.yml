@@ -1,2 +1,9 @@
 ---
-# tasks file for ansible-role-dnf
+- name: Setup dnf auto updates
+  include_tasks: automatic.yml
+  when: dnf_automatic_enabled|bool
+
+- name: Enable dnf modules
+  include_tasks: module_enable.yml
+  when: dnf_modules|length > 0
+  loop: "{{ dnf_modules }}"

@@ -1,0 +1,16 @@
+---
+- name: Install dnf-automatic package
+  ansible.builtin.package:
+    name: dnf-automatic
+    state: present
+
+- name: Enable a timer unit for dnf-automatic
+  ansible.builtin.systemd:
+    name: dnf-automatic.timer
+    state: started
+    enabled: yes
+
+- name: Copy config file
+  template:
+    src: automatic.conf.j2
+    dest: /etc/dnf/automatic.conf

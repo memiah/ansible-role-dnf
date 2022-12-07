@@ -1,2 +1,16 @@
 ---
-# defaults file for ansible-role-dnf
+dnf_automatic_enabled: True
+
+dnf_automatic_upgrade_type: security
+dnf_automatic_apply_updates: yes
+dnf_automatic_random_sleep: 300
+dnf_automatic_download_updates: yes
+dnf_automatic_email_from: root@example.com
+dnf_automatic_email_to: root
+
+dnf_modules: {}
+#dnf_modules:
+#  - name: php
+#    stream: remi-8.0
+#  - name: httpd
+#    stream: codeit
