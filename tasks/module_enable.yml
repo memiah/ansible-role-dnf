@@ -1,6 +1,0 @@
----
-- name: Reset dnf {{ item.name }} module
-  command: "dnf module reset {{ item.name }} -y"
-
-- name: Enable dnf {{ item.name }} module to {{ item.stream }}
-  command: "dnf module enable {{ item.name }}:{{ item.stream }} -y"

@@ -26,18 +26,6 @@ Available variables are listed below, along with default values (see `defaults/m
 
 This default configuration sets dnf-automatic up to automatically download and install only security updates.
 
-Additionally, you can set some basic dnf module enabling options.
-
-    dnf_modules: {}
-
-For example, this would set the streams for the php and httpd modules:
-
-    dnf_modules:
-      - name: php
-        stream: remi-8.0
-      - name: httpd
-        stream: codeit
-
 Dependencies
 ------------
 
